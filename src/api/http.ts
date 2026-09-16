@@ -10,7 +10,7 @@
 import axios from 'axios'
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import type { ApiResponse } from '@/types/api'
-import { removeStorage } from '@/utils/storage'
+import { getStorage, removeStorage } from '@/utils/storage'
 import mockAdapter from '@/mock/adapter'
 
 /** token 在 localStorage 里的 key（登录后写入，见 stores/user.ts） */
@@ -43,15 +43,8 @@ function createHttp(): AxiosInstance {
   /* ---------- 请求拦截器：出发前统一"安检" ---------- */
   instance.interceptors.request.use((config) => {
     // 从 localStorage 取 token 挂到请求头（真实系统这就是 JWT）
-    const raw = localStorage.getItem(`vue3-admin-tutorial:${TOKEN_KEY}`)
-    if (raw) {
-      try {
-        const token = JSON.parse(raw) as string
-        if (token) config.headers.Authorization = `Bearer ${token}`
-      } catch {
-        // token 存储损坏就当作没登录
-      }
-    }
+    const token = getStorage<string>(TOKEN_KEY, '')
+    if (token) config.headers.Authorization = `Bearer ${token}`
     return config
   })
 
