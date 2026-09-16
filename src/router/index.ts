@@ -79,6 +79,13 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/ProfileView.vue'),
         meta: { requiresAuth: true, title: '个人设置', icon: '⚙️' },
       },
+      {
+        // 组件库对照页：与 /users 功能相同的 Element Plus 版（docs/12）
+        path: 'element-demo/users',
+        name: 'element-users',
+        component: () => import('@/views/element-demo/ElementUsersView.vue'),
+        meta: { requiresAuth: true, title: 'Element Plus 对照', icon: '🧩' },
+      },
     ],
   },
   // 通配路由：以上都不匹配时兜底（正则语法，:pathMatch 接收任意路径）

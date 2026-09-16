@@ -24,6 +24,7 @@ const menus = [
   { title: '用户管理', icon: '👥', to: '/users' },
   { title: '文章管理', icon: '📝', to: '/articles' },
   { title: '个人设置', icon: '⚙️', to: '/profile' },
+  { title: '组件库对照', icon: '🧩', to: '/element-demo/users' },
 ]
 </script>
 
