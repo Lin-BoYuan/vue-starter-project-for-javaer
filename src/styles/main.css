@@ -1,6 +1,9 @@
 /* 📖 配套教程：docs/11-styling.md
-   全局基础样式：重置浏览器默认样式 + 定义全局 CSS 变量。
+   全局基础样式：重置浏览器默认样式 + 定义全局 CSS 变量（含暗色主题）。
    在 main.ts 里 import 一次，对所有页面生效（相当于全局生效的 application.yml）。 */
+
+/* @import 必须写在文件最顶部（CSS 规范），引入跨页面复用的公共样式 */
+@import './common.css';
 
 /* 盒模型统一为 border-box：宽高计算包含 padding 和 border，前端事实标准 */
 *,
@@ -12,8 +15,9 @@
 }
 
 :root {
-  /* 全局 CSS 变量：全项目共用的设计规范（颜色、字号），暗色主题在后续章节切换 */
+  /* 全局 CSS 变量：全项目共用的设计规范。使用方式：color: var(--color-primary) */
   --color-primary: #409eff;
+  --color-primary-dark: #337ecc;
   --color-text: #303133;
   --color-text-secondary: #909399;
   --color-border: #dcdfe6;
@@ -21,10 +25,24 @@
   --color-bg-card: #ffffff;
   --color-danger: #f56c6c;
   --color-success: #67c23a;
+  --color-warning: #e6a23c;
 
   --font-size-base: 14px;
   --border-radius: 6px;
   --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* 暗色主题：html 根元素加上 .dark 类后，下面这组变量会覆盖上面的同名变量，
+   所有用了 var(--color-xxx) 的地方自动跟着变——这就是 CSS 变量的威力 */
+html.dark {
+  color-scheme: dark;
+  --color-primary: #409eff;
+  --color-text: #e5eaf3;
+  --color-text-secondary: #8b909a;
+  --color-border: #3c4049;
+  --color-bg: #101218;
+  --color-bg-card: #1a1e27;
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -35,4 +53,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
