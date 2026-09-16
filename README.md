@@ -95,22 +95,52 @@ npm run dev        # 打开 http://localhost:5173
 
 ```
 vue3-admin-tutorial/
-├── docs/          # 13 章精读文档（从这里开始）
-├── src/
-│   ├── api/       # 接口层：axios 封装 + 各业务 API
-│   ├── mock/      # 浏览器里的模拟后端（教学核心）
-│   ├── router/    # 路由表 + 登录守卫
-│   ├── stores/    # Pinia 全局状态
-│   ├── composables/  # 组合式函数：useLoading / usePagination / useTheme
-│   ├── components/   # 通用组件（弹窗/分页条/统计卡…）
-│   ├── layouts/   # 后台布局（侧边栏 + 顶栏）
-│   ├── views/     # 页面（登录/仪表盘/用户/文章/设置/404）
-│   ├── types/     # TS 类型定义
-│   ├── utils/     # 工具函数
-│   ├── styles/    # 全局样式与 CSS 变量（含暗色主题）
-│   └── constants/ # 常量
-└── index.html     # SPA 唯一的 HTML
+├── docs/                      # 13 章精读文档（学习从这里开始）
+├── src/                       # 全部业务源码
+│   ├── api/                   #   接口层：axios 封装 + 各业务 API
+│   ├── mock/                  #   浏览器里的模拟后端（教学核心）
+│   ├── router/                #   路由表 + 登录守卫
+│   ├── stores/                #   Pinia 全局状态
+│   ├── composables/           #   组合式函数：useLoading / usePagination / useTheme
+│   ├── components/            #   通用组件（弹窗/分页条/统计卡…）
+│   ├── layouts/               #   后台布局（侧边栏 + 顶栏）
+│   ├── views/                 #   页面（登录/仪表盘/用户/文章/设置/404）
+│   ├── types/                 #   TS 类型定义
+│   ├── utils/                 #   工具函数
+│   ├── styles/                #   全局样式与 CSS 变量（含暗色主题）
+│   ├── constants/             #   常量（注入 key、文章分类）
+│   ├── App.vue                #   根组件（只放一个 <RouterView/>）
+│   └── main.ts                #   🚀 应用入口：createApp + 注册插件
+│
+│  ── 根目录配置文件（每个都是什么？）──
+├── index.html                 # SPA 唯一的 HTML：页面全部由 JS 画进 <div id="app">
+├── package.json               # 项目清单：依赖与脚本 ≈ pom.xml
+├── package-lock.json          # 依赖版本锁定：保证每个人装到完全相同的版本（必须提交）
+├── vite.config.ts             # Vite 配置：插件、@ 别名、开发代理、按路由代码分割
+├── tsconfig.json              # TS 配置入口（引用下面两个，≈ 父子 pom 的关系）
+├── tsconfig.app.json          # 浏览器端代码的 TS 规则
+├── tsconfig.node.json         # vite.config.ts 等构建脚本的 TS 规则
+├── env.d.ts                   # 给 import.meta.env 补 TS 类型（第 3 章"声明合并"）
+├── eslint.config.ts           # ESLint 代码检查规则
+├── .oxlintrc.json             # oxlint（第二套更快的 lint）规则
+├── .prettierrc.json           # Prettier 格式化规则
+├── .editorconfig              # 跨编辑器统一缩进/换行风格
+├── .vscode/                   # 团队 VSCode 推荐插件清单
+├── .env.development           # 开发环境变量 ≈ application-dev.yml
+├── .env.production            # 生产环境变量 ≈ application-prod.yml
+├── .gitignore                 # 告诉 git 忽略哪些文件（见下方"本地生成物"）
+├── .gitattributes             # 统一仓库换行符为 LF（跨平台协作必备）
+├── public/                    # 原样拷贝的静态资源（favicon），不经打包处理
+├── LICENSE                    # MIT 开源协议
+└── README.md                  # 本文件
+
+│  ── 本地生成物：clone 后做相应操作才会出现，已被 .gitignore 排除，不要提交 ──
+├── node_modules/              # npm install 之后：依赖本体 ≈ 项目本地的 .m2 仓库（体积巨大）
+├── dist/                      # npm run build 之后：部署用的静态产物（扔给 Nginx）
+└── .eslintcache               # npm run lint 之后：lint 的加速缓存
 ```
+
+> ☕ **Java 视角**：这份目录对照 pom.xml（package.json）→ 本地仓库（node_modules）→ target/（dist）→ application-dev.yml（.env.development）的映射，你一眼就能对上号。各配置文件的深入讲解在 [docs/02-project-setup.md](docs/02-project-setup.md)。
 
 ## 🧭 精读方法建议
 
