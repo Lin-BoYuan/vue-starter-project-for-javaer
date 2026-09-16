@@ -8,7 +8,14 @@
  * 真实项目里这些逻辑全部在 Spring Boot 里，前端 mock 只是为了本地自测。
  */
 import type { ApiResponse, PageResult } from '@/types/api'
-import type { Article, ArticleForm, DashboardStats, LoginResult, UserAccount, UserForm } from '@/types/models'
+import type {
+  Article,
+  ArticleForm,
+  DashboardStats,
+  LoginResult,
+  UserAccount,
+  UserForm,
+} from '@/types/models'
 import { db, flushDb, resetMockDb } from './data'
 
 /** 业务错误：抛出后由 dispatch 统一转成错误信封（≈ 后端抛 BusinessException 走全局异常处理器） */
@@ -145,9 +152,7 @@ function listUsers(req: MockRequest): PageResult<UserAccount> {
 
   let list = [...db.users] // 浅拷贝，避免排序/过滤影响原数据
   if (keyword) {
-    list = list.filter(
-      (u) => u.username.includes(keyword) || u.nickname.includes(keyword),
-    )
+    list = list.filter((u) => u.username.includes(keyword) || u.nickname.includes(keyword))
   }
   if (status === '0' || status === '1') {
     list = list.filter((u) => u.status === Number(status))

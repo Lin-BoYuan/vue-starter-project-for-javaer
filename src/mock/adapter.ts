@@ -51,12 +51,16 @@ async function mockAdapter(config: InternalAxiosRequestConfig): Promise<AxiosRes
   // 解析 Authorization: Bearer xxx
   const authHeader = config.headers?.Authorization
   const token =
-    typeof authHeader === 'string' && authHeader.startsWith('Bearer ')
-      ? authHeader.slice(7)
-      : null
+    typeof authHeader === 'string' && authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null
 
   // 调用模拟后端（内部自带网络延迟）
-  const data = await dispatch({ method: (config.method ?? 'get').toUpperCase(), path, query, body, token })
+  const data = await dispatch({
+    method: (config.method ?? 'get').toUpperCase(),
+    path,
+    query,
+    body,
+    token,
+  })
 
   // HTTP 状态码恒为 200，业务成败由信封里的 code 决定（很多国内后端团队就这么约定的）
   return {

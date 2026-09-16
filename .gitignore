@@ -13,6 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
+.eslintcache
 
 # 编辑器与系统文件
 .DS_Store

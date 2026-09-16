@@ -42,10 +42,30 @@ interface StatCardItem {
 const statCards = computed<StatCardItem[]>(() => {
   if (!stats.value) return []
   return [
-    { label: '用户总数', value: formatNumber(stats.value.totalUsers), icon: '👥', accent: 'primary' },
-    { label: '文章总数', value: formatNumber(stats.value.totalArticles), icon: '📝', accent: 'success' },
-    { label: '总阅读量', value: formatNumber(stats.value.totalViews), icon: '👀', accent: 'warning' },
-    { label: '在线会话', value: formatNumber(stats.value.todayLogins), icon: '🔑', accent: 'danger' },
+    {
+      label: '用户总数',
+      value: formatNumber(stats.value.totalUsers),
+      icon: '👥',
+      accent: 'primary',
+    },
+    {
+      label: '文章总数',
+      value: formatNumber(stats.value.totalArticles),
+      icon: '📝',
+      accent: 'success',
+    },
+    {
+      label: '总阅读量',
+      value: formatNumber(stats.value.totalViews),
+      icon: '👀',
+      accent: 'warning',
+    },
+    {
+      label: '在线会话',
+      value: formatNumber(stats.value.todayLogins),
+      icon: '🔑',
+      accent: 'danger',
+    },
   ]
 })
 </script>

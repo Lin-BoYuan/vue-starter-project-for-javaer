@@ -35,7 +35,13 @@ watch(
     Object.assign(
       form,
       user
-        ? { username: user.username, nickname: user.nickname, email: user.email, role: user.role, status: user.status }
+        ? {
+            username: user.username,
+            nickname: user.nickname,
+            email: user.email,
+            role: user.role,
+            status: user.status,
+          }
         : emptyForm(),
     )
   },
@@ -53,7 +59,12 @@ function validate(): boolean {
 function handleSave(): void {
   if (!validate()) return
   // 展开拷贝一份再上报：避免父组件拿到（并可能修改）本组件的内部状态
-  emit('save', { ...form, username: form.username.trim(), nickname: form.nickname.trim(), email: form.email.trim() })
+  emit('save', {
+    ...form,
+    username: form.username.trim(),
+    nickname: form.nickname.trim(),
+    email: form.email.trim(),
+  })
 }
 </script>
 
@@ -67,7 +78,13 @@ function handleSave(): void {
           <div class="form-item">
             <label class="form-label required">用户名</label>
             <!-- 编辑模式下用户名不允许改（它是登录凭证） -->
-            <input v-model="form.username" class="form-input" type="text" :disabled="isEdit" placeholder="登录账号" />
+            <input
+              v-model="form.username"
+              class="form-input"
+              type="text"
+              :disabled="isEdit"
+              placeholder="登录账号"
+            />
             <span v-if="errors.username" class="form-error">{{ errors.username }}</span>
           </div>
 
@@ -79,7 +96,12 @@ function handleSave(): void {
 
           <div class="form-item">
             <label class="form-label">邮箱</label>
-            <input v-model="form.email" class="form-input" type="email" placeholder="name@example.com" />
+            <input
+              v-model="form.email"
+              class="form-input"
+              type="email"
+              placeholder="name@example.com"
+            />
             <span v-if="errors.email" class="form-error">{{ errors.email }}</span>
           </div>
 
@@ -105,7 +127,12 @@ function handleSave(): void {
 
           <div class="dialog-actions">
             <button class="btn" type="button" @click="emit('close')">取消</button>
-            <button class="btn btn-primary" type="submit" :disabled="loading" data-testid="user-form-save">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              :disabled="loading"
+              data-testid="user-form-save"
+            >
               {{ loading ? '保存中…' : '保存' }}
             </button>
           </div>

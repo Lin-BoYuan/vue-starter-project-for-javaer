@@ -61,7 +61,9 @@ function goProfile(): void {
         <!-- v-if：条件渲染，false 时连 DOM 都不存在 -->
         <div v-if="dropdownOpen" class="dropdown">
           <button class="dropdown-item" @click="goProfile">⚙️ 个人设置</button>
-          <button class="dropdown-item" data-testid="logout-btn" @click="handleLogout">🚪 退出登录</button>
+          <button class="dropdown-item" data-testid="logout-btn" @click="handleLogout">
+            🚪 退出登录
+          </button>
         </div>
       </div>
     </div>

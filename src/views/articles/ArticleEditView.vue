@@ -125,16 +125,32 @@ async function handleSubmit(): Promise<void> {
 
       <div class="form-item">
         <label class="form-label" for="summary">摘要</label>
-        <input id="summary" v-model="form.summary" class="form-input" type="text" placeholder="列表页展示的一句话简介" />
+        <input
+          id="summary"
+          v-model="form.summary"
+          class="form-input"
+          type="text"
+          placeholder="列表页展示的一句话简介"
+        />
       </div>
 
       <div class="form-item">
         <label class="form-label" for="content">正文</label>
-        <textarea id="content" v-model="form.content" class="form-textarea" placeholder="支持换行，详情页会按原样显示"></textarea>
+        <textarea
+          id="content"
+          v-model="form.content"
+          class="form-textarea"
+          placeholder="支持换行，详情页会按原样显示"
+        ></textarea>
       </div>
 
       <div class="editor-actions">
-        <button class="btn btn-primary" type="submit" :disabled="saving || loading" data-testid="article-save">
+        <button
+          class="btn btn-primary"
+          type="submit"
+          :disabled="saving || loading"
+          data-testid="article-save"
+        >
           {{ saving ? '保存中…' : '保存' }}
         </button>
       </div>

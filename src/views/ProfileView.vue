@@ -136,10 +136,17 @@ async function handleReset(): Promise<void> {
           </div>
         </div>
         <ul class="me-list">
-          <li><span>角色</span><span class="tag tag-warning">{{ roleText }}</span></li>
+          <li>
+            <span>角色</span><span class="tag tag-warning">{{ roleText }}</span>
+          </li>
           <li><span>状态</span><span class="tag tag-success">正常</span></li>
-          <li><span>邮箱</span><span class="mono">{{ me?.email || '-' }}</span></li>
-          <li><span>注册时间</span><span class="mono">{{ me ? formatDateTime(me.createdAt) : '-' }}</span></li>
+          <li>
+            <span>邮箱</span><span class="mono">{{ me?.email || '-' }}</span>
+          </li>
+          <li>
+            <span>注册时间</span
+            ><span class="mono">{{ me ? formatDateTime(me.createdAt) : '-' }}</span>
+          </li>
         </ul>
       </section>
 
@@ -149,15 +156,34 @@ async function handleReset(): Promise<void> {
         <form @submit.prevent="saveProfile">
           <div class="form-item">
             <label class="form-label required" for="nickname">昵称</label>
-            <input id="nickname" v-model="profileForm.nickname" class="form-input" type="text" data-testid="nickname-input" />
-            <span v-if="profileErrors.nickname" class="form-error">{{ profileErrors.nickname }}</span>
+            <input
+              id="nickname"
+              v-model="profileForm.nickname"
+              class="form-input"
+              type="text"
+              data-testid="nickname-input"
+            />
+            <span v-if="profileErrors.nickname" class="form-error">{{
+              profileErrors.nickname
+            }}</span>
           </div>
           <div class="form-item">
             <label class="form-label" for="email">邮箱</label>
-            <input id="email" v-model="profileForm.email" class="form-input" type="email" data-testid="email-input" />
+            <input
+              id="email"
+              v-model="profileForm.email"
+              class="form-input"
+              type="email"
+              data-testid="email-input"
+            />
             <span v-if="profileErrors.email" class="form-error">{{ profileErrors.email }}</span>
           </div>
-          <button class="btn btn-primary" type="submit" :disabled="savingProfile" data-testid="save-profile-btn">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            :disabled="savingProfile"
+            data-testid="save-profile-btn"
+          >
             {{ savingProfile ? '保存中…' : '保存资料' }}
           </button>
         </form>
@@ -169,12 +195,27 @@ async function handleReset(): Promise<void> {
         <form @submit.prevent="changePassword">
           <div class="form-item">
             <label class="form-label required" for="new-password">新密码</label>
-            <input id="new-password" v-model="passwordForm.newPassword" class="form-input" type="password" placeholder="至少 6 位" data-testid="new-password-input" />
+            <input
+              id="new-password"
+              v-model="passwordForm.newPassword"
+              class="form-input"
+              type="password"
+              placeholder="至少 6 位"
+              data-testid="new-password-input"
+            />
           </div>
           <div class="form-item">
             <label class="form-label required" for="confirm-password">确认新密码</label>
-            <input id="confirm-password" v-model="passwordForm.confirmPassword" class="form-input" type="password" data-testid="confirm-password-input" />
-            <span v-if="passwordError" class="form-error" data-testid="password-error">{{ passwordError }}</span>
+            <input
+              id="confirm-password"
+              v-model="passwordForm.confirmPassword"
+              class="form-input"
+              type="password"
+              data-testid="confirm-password-input"
+            />
+            <span v-if="passwordError" class="form-error" data-testid="password-error">{{
+              passwordError
+            }}</span>
           </div>
           <button class="btn btn-primary" type="submit" :disabled="savingPassword">
             {{ savingPassword ? '提交中…' : '修改密码' }}
@@ -187,7 +228,12 @@ async function handleReset(): Promise<void> {
       <section class="card danger-zone">
         <h3 class="section-title">演示数据</h3>
         <p class="hint">把用户/文章等数据恢复到初始状态（本项目教学辅助功能）。</p>
-        <button class="btn btn-danger" :disabled="resetting" data-testid="reset-data-btn" @click="resetOpen = true">
+        <button
+          class="btn btn-danger"
+          :disabled="resetting"
+          data-testid="reset-data-btn"
+          @click="resetOpen = true"
+        >
           {{ resetting ? '重置中…' : '🔄 重置演示数据' }}
         </button>
       </section>

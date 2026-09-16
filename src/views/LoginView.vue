@@ -106,7 +106,12 @@ async function handleSubmit(): Promise<void> {
         </div>
 
         <!-- :disabled 绑定 loading：请求进行中禁止重复点击 -->
-        <button class="btn btn-primary login-btn" type="submit" :disabled="loading" data-testid="login-btn">
+        <button
+          class="btn btn-primary login-btn"
+          type="submit"
+          :disabled="loading"
+          data-testid="login-btn"
+        >
           <span v-if="loading" class="loading-spinner spinner-sm"></span>
           {{ loading ? '登录中…' : '登 录' }}
         </button>

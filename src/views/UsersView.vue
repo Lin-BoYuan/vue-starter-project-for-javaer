@@ -6,7 +6,6 @@
 import { onMounted, reactive, ref } from 'vue'
 import { ApiError } from '@/api/http'
 import { createUser, deleteUser, getUserPage, updateUser } from '@/api/user'
-import type { UserPageQuery } from '@/api/user'
 import { useLoading } from '@/composables/useLoading'
 import { usePagination } from '@/composables/usePagination'
 import { formatDateTime } from '@/utils/format'
@@ -132,7 +131,9 @@ function roleText(role: UserAccount['role']): string {
   <div class="page-container">
     <div class="page-header">
       <h2 class="page-title">用户管理</h2>
-      <button class="btn btn-primary" data-testid="create-user-btn" @click="openCreate">＋ 新增用户</button>
+      <button class="btn btn-primary" data-testid="create-user-btn" @click="openCreate">
+        ＋ 新增用户
+      </button>
     </div>
 
     <!-- 错误提示条：任何操作失败都显示在这里 -->
@@ -152,7 +153,11 @@ function roleText(role: UserAccount['role']): string {
         data-testid="search-input"
         @keyup.enter="handleSearch"
       />
-      <select v-model.number="filters.status" class="form-select status-select" @change="handleSearch">
+      <select
+        v-model.number="filters.status"
+        class="form-select status-select"
+        @change="handleSearch"
+      >
         <option value="">全部状态</option>
         <option :value="1">已启用</option>
         <option :value="0">已禁用</option>
@@ -186,7 +191,9 @@ function roleText(role: UserAccount['role']): string {
             <td class="mono">{{ user.username }}</td>
             <td>{{ user.nickname }}</td>
             <td class="mono">{{ user.email || '-' }}</td>
-            <td><span class="tag" :class="roleTag(user.role)">{{ roleText(user.role) }}</span></td>
+            <td>
+              <span class="tag" :class="roleTag(user.role)">{{ roleText(user.role) }}</span>
+            </td>
             <td>
               <!-- 状态即按钮：点了直接切换（常见于开关类操作） -->
               <button
@@ -201,8 +208,14 @@ function roleText(role: UserAccount['role']): string {
             </td>
             <td class="mono">{{ formatDateTime(user.createdAt) }}</td>
             <td class="actions">
-              <button class="btn btn-sm" data-testid="edit-user-btn" @click="openEdit(user)">编辑</button>
-              <button class="btn btn-sm btn-danger" data-testid="delete-user-btn" @click="deleteTarget = user">
+              <button class="btn btn-sm" data-testid="edit-user-btn" @click="openEdit(user)">
+                编辑
+              </button>
+              <button
+                class="btn btn-sm btn-danger"
+                data-testid="delete-user-btn"
+                @click="deleteTarget = user"
+              >
                 删除
               </button>
             </td>
@@ -230,7 +243,13 @@ function roleText(role: UserAccount['role']): string {
     />
 
     <!-- 新增/编辑弹窗 -->
-    <UserFormDialog :open="formOpen" :user="editingUser" :loading="saving" @save="handleSave" @close="formOpen = false" />
+    <UserFormDialog
+      :open="formOpen"
+      :user="editingUser"
+      :loading="saving"
+      @save="handleSave"
+      @close="formOpen = false"
+    />
   </div>
 </template>
 

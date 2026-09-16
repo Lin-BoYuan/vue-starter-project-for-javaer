@@ -88,7 +88,13 @@ const editingUser = ref<UserAccount | null>(null)
 const saving = ref(false)
 const formRef = ref<FormInstance>() // 组件 ref：拿到 el-form 实例来调 validate() 方法
 
-const form = reactive<UserForm>({ username: '', nickname: '', email: '', role: 'editor', status: 1 })
+const form = reactive<UserForm>({
+  username: '',
+  nickname: '',
+  email: '',
+  role: 'editor',
+  status: 1,
+})
 
 // 校验规则：声明式配置，框架自动执行（对比手写版自己写的 validate 函数）
 const rules: FormRules<UserForm> = {
@@ -146,7 +152,9 @@ async function handleSave(): Promise<void> {
     <div class="page-header">
       <h2 class="page-title">
         用户管理 · Element Plus 版
-        <el-tag size="small" type="info" style="margin-left: 8px">与手写版功能相同，对照阅读</el-tag>
+        <el-tag size="small" type="info" style="margin-left: 8px"
+          >与手写版功能相同，对照阅读</el-tag
+        >
       </h2>
       <el-button type="primary" @click="openCreate">＋ 新增用户</el-button>
     </div>

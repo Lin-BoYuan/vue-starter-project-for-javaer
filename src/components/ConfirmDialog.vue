@@ -23,20 +23,20 @@ const emit = defineEmits<{ confirm: []; cancel: [] }>()
     <!-- v-if 控制显隐；@click.self：只有点到遮罩本身（不是里面的弹窗）才关闭 -->
     <div v-if="open" class="dialog-overlay" @click.self="emit('cancel')">
       <div class="dialog-box card" role="dialog" aria-modal="true">
-          <h3 class="dialog-title">{{ title ?? '确认操作' }}</h3>
-          <p class="dialog-message">{{ message }}</p>
-          <div class="dialog-actions">
-            <button class="btn" @click="emit('cancel')">取消</button>
-            <button
-              class="btn"
-              :class="danger ? 'btn-danger' : 'btn-primary'"
-              :disabled="loading"
-              data-testid="dialog-confirm"
-              @click="emit('confirm')"
-            >
-              {{ loading ? '处理中…' : '确定' }}
-            </button>
-          </div>
+        <h3 class="dialog-title">{{ title ?? '确认操作' }}</h3>
+        <p class="dialog-message">{{ message }}</p>
+        <div class="dialog-actions">
+          <button class="btn" @click="emit('cancel')">取消</button>
+          <button
+            class="btn"
+            :class="danger ? 'btn-danger' : 'btn-primary'"
+            :disabled="loading"
+            data-testid="dialog-confirm"
+            @click="emit('confirm')"
+          >
+            {{ loading ? '处理中…' : '确定' }}
+          </button>
+        </div>
       </div>
     </div>
   </Teleport>

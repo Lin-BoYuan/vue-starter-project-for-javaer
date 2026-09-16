@@ -19,11 +19,13 @@ const { loading, run } = useLoading()
 const { page, pageSize, total, reset } = usePagination(10)
 
 // filters 只存筛选字段（page/pageSize 在 usePagination 里），请求时再拼到一起
-const filters = reactive<{ keyword: string; category: string; status: 'draft' | 'published' | '' }>({
-  keyword: '',
-  category: '',
-  status: '',
-})
+const filters = reactive<{ keyword: string; category: string; status: 'draft' | 'published' | '' }>(
+  {
+    keyword: '',
+    category: '',
+    status: '',
+  },
+)
 
 async function fetchArticles(): Promise<void> {
   errorMessage.value = ''
@@ -147,8 +149,14 @@ function statusText(status: Article['status']): string {
                 {{ article.title }}
               </RouterLink>
             </td>
-            <td><span class="tag tag-info">{{ article.category }}</span></td>
-            <td><span class="tag" :class="statusTag(article.status)">{{ statusText(article.status) }}</span></td>
+            <td>
+              <span class="tag tag-info">{{ article.category }}</span>
+            </td>
+            <td>
+              <span class="tag" :class="statusTag(article.status)">{{
+                statusText(article.status)
+              }}</span>
+            </td>
             <td>{{ formatNumber(article.views) }}</td>
             <td class="mono">{{ formatDateTime(article.createdAt) }}</td>
             <td class="actions">
