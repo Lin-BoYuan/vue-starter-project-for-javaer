@@ -58,3 +58,11 @@ export function updateUser(id: number, data: Partial<UserForm>): Promise<UserAcc
 export function deleteUser(id: number): Promise<null> {
   return request<null>({ url: `/users/${id}`, method: 'delete' })
 }
+
+/**
+ * 重置演示数据（教学辅助）：恢复 mock 数据库的种子数据。
+ * 只在 mock 模式下有意义；对接真实后端后这个接口不存在，别在生产代码里调用它。
+ */
+export function resetMockData(): Promise<null> {
+  return request<null>({ url: '/mock/reset', method: 'post' })
+}

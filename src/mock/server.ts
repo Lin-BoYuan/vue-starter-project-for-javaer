@@ -122,11 +122,9 @@ function handleUpdateProfile(req: MockRequest): UserAccount {
   if (typeof body.email === 'string' && body.email.includes('@')) {
     user.email = body.email.trim()
   }
-  // 密码改好了要"重新登录"——顺带把旧会话作废，前端体会一下这个流程
+  // 改密码成功后要把该用户的所有会话作废（安全惯例：改密码后强制重新登录）
   if (typeof body.newPassword === 'string' && body.newPassword !== '') {
     delete db.sessions[req.token ?? '']
-    flushDb()
-    throw new MockError(401, '密码修改成功，请重新登录')
   }
   flushDb()
   return { ...user }
