@@ -6,7 +6,7 @@
  *   且只能存字符串，所以这里用 JSON 序列化/反序列化）。
  */
 
-const PREFIX = 'vue3-admin-tutorial:'
+const PREFIX = 'vue-starter-project-for-javaer:'
 
 /** 读取：key 不存在或解析失败时返回 fallback（对应 Java 的 getOrDefault） */
 export function getStorage<T>(key: string, fallback: T): T {

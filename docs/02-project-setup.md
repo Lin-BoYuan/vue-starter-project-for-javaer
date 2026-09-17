@@ -28,7 +28,7 @@ npm -v    # npm 随 Node 一起装好
 
 ```jsonc
 {
-  "name": "vue3-admin-tutorial",
+  "name": "vue-starter-project-for-javaer",
   "version": "0.1.0",
   "type": "module",                       // 使用 ESM 模块规范
   "scripts": {                            // ≈ mvn 的 lifecycle/goal
@@ -87,7 +87,7 @@ npm -v    # npm 随 Node 一起装好
 ## 4. 本项目目录结构速览（🗺 建议对照着打开）
 
 ```
-vue3-admin-tutorial/
+vue-starter-project-for-javaer/
 ├── index.html               # SPA 的唯一 HTML（body 里只有一个 <div id="app">）
 ├── package.json             # 依赖与脚本
 ├── vite.config.ts           # Vite 配置：插件、@ 别名、开发代理

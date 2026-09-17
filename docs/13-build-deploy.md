@@ -33,7 +33,7 @@ dist/assets/index-XXXX.css       # 抽取的全部 CSS
 server {
     listen 80;
     server_name admin.example.com;
-    root /var/www/vue3-admin-tutorial/dist;    # 构建产物目录
+    root /var/www/vue-starter-project-for-javaer/dist;    # 构建产物目录
     index index.html;
 
     # ⭐ SPA 的灵魂配置：所有未知路径回退到 index.html

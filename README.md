@@ -1,4 +1,4 @@
-# vue3-admin-tutorial 🎓
+# vue-starter-project-for-javaer 🎓
 
 **给 Java 程序员的 Vue3 全栈入门——Mini 管理后台实战**
 
@@ -29,8 +29,8 @@
 ## 🚀 快速开始
 
 ```bash
-git clone https://github.com/你的用户名/vue3-admin-tutorial.git
-cd vue3-admin-tutorial
+git clone https://github.com/你的用户名/vue-starter-project-for-javaer.git
+cd vue-starter-project-for-javaer
 npm install
 npm run dev        # 打开 http://localhost:5173
 ```
@@ -94,7 +94,7 @@ npm run dev        # 打开 http://localhost:5173
 ## 📁 目录结构
 
 ```
-vue3-admin-tutorial/
+vue-starter-project-for-javaer/
 ├── docs/                      # 13 章精读文档（学习从这里开始）
 ├── src/                       # 全部业务源码
 │   ├── api/                   #   接口层：axios 封装 + 各业务 API
